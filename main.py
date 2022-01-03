@@ -1,7 +1,8 @@
 import streamlit as st
 from newsscrapper import newsNDTV
+from newsscrapper import IndiaToday
 
-st.title("News ")
+st.title("News Collection App")
 st.image("omeg.png", use_column_width=True)
 
 sidebar=st.sidebar
@@ -32,6 +33,19 @@ def execute():
         for news in data:
             st.subheader(news.get('heading'))
             st.subheader(news.get('summary'))
+            st.subheader(news.get('src'))
+            st.subheader(news.get('image'))
+            st.subheader(news.get('link'))
+
+        data = IndiaToday()
+        st.text(data)
+
+        for news in data:
+            st.subheader(news.get('heading'))
+            st.subheader(news.get('summary'))
+            st.subheader(news.get('link'))
+            
+            st.subheader(news.get('image'))
 
 
 
