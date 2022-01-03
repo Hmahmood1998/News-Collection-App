@@ -14,7 +14,7 @@ def newsNDTV():
         if not  'adBg' in row.attrs.get('class'):
             
             detail['link'] = row.find('h2').attrs.get('href')
-            detail['heading'] = row.find('h2')
+            detail['heading'] = row.find('h2').text
             
             detail['src']=row.find('span').text
             
