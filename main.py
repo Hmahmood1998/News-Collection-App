@@ -4,11 +4,12 @@ from newsscrapper import IndiaToday
 
 st.title("News Collection App")
 
-st.image("title.jpg",use_column_width=True)
+st.image("title.jpg", use_column_width=True)
 
-sidebar=st.sidebar
+sidebar = st.sidebar
 
 sidebar.title("User Options")
+
 
 def introduction():
     st.markdown("""
@@ -31,22 +32,27 @@ def execute():
     - second inst
     ''')
 
-    selWebsite = st.selectbox('Select the Website',['newsNDTV','IndiaToday','News18'])
-    websiteImages = {'newsNDTV':'NDTV.png','IndiaToday':'indiatoday.jpg','News18':'news18breakingnews.webp'}
+    selWebsite = st.selectbox('Select the Website', [
+                              'newsNDTV', 'IndiaToday', 'News18'])
+    websiteImages = {'newsNDTV': 'NDTV.png',
+                     'IndiaToday': 'indiatoday.jpg', 'News18': 'news18breakingnews.webp'}
     st.image(websiteImages.get(selWebsite))
     st.subheader('Click here for collect News')
-    
+
     start = st.button('Collect News')
     if start:
         data = newsNDTV()
         st.text(data)
 
         for news in data:
-            st.subheader(news.get('heading'))
-            st.subheader(news.get('summary'))
-            st.subheader(news.get('src'))
-            st.subheader(news.get('image'))
-            st.subheader(news.get('link'))
+            c1, c2 = st.columns(2)
+            c1.markdown(f"![]({news.get('image')})")
+            c2.markdown(f"""
+                ## {news.get('heading')}
+                {news.get('summary')}
+                {news.get('src')}
+                [View Full Article]({news.get('link')})
+            """)
 
         data = IndiaToday()
         st.text(data)
@@ -55,9 +61,8 @@ def execute():
             st.subheader(news.get('heading'))
             st.subheader(news.get('summary'))
             st.subheader(news.get('link'))
-            
-            st.subheader(news.get('image'))
 
+            st.subheader(news.get('image'))
 
 
 options = ['Project Introduction', 'Execution']
