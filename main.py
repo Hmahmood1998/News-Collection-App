@@ -37,15 +37,15 @@ def execute():
             st.subheader(news.get('image'))
             st.subheader(news.get('link'))
 
-        # data = IndiaToday()
-        # st.text(data)
+        data = IndiaToday()
+        st.text(data)
 
-        # for news in data:
-        #     st.subheader(news.get('heading'))
-        #     st.subheader(news.get('summary'))
-        #     st.subheader(news.get('link'))
+        for news in data:
+            st.subheader(news.get('heading'))
+            st.subheader(news.get('summary'))
+            st.subheader(news.get('link'))
             
-        #     st.subheader(news.get('image'))
+            st.subheader(news.get('image'))
 
 
 
