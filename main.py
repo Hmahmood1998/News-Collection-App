@@ -32,10 +32,8 @@ def execute():
     - second inst
     ''')
 
-    selWebsite = st.selectbox('Select the Website', [
-                              'newsNDTV', 'IndiaToday', 'News18'])
-    websiteImages = {'newsNDTV': 'NDTV.png',
-                     'IndiaToday': 'indiatoday.jpg', 'News18': 'news18breakingnews.webp'}
+    selWebsite = st.selectbox('Select the Website', ['newsNDTV', 'IndiaToday','IndianExpress','BusinessStandard','News18'])
+    websiteImages = {'newsNDTV': 'NDTV.png','IndiaToday': 'indiatoday.jpg','IndianExpress':'expresslogo.jpg','BusinessStandard':'bslogo.png','News18': 'news18breakingnews.webp'}
     st.image(websiteImages.get(selWebsite))
     st.subheader('Click here for collect News')
 
