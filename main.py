@@ -3,7 +3,8 @@ from newsscrapper import newsNDTV
 from newsscrapper import IndiaToday
 
 st.title("News Collection App")
-st.image("omeg.png", use_column_width=True)
+
+st.image("title.jpg",use_column_width=True)
 
 sidebar=st.sidebar
 
@@ -24,7 +25,17 @@ def introduction():
 
 
 def execute():
-    st.subheader('project working here')
+    st.header("Instruction")
+    st.markdown('''
+    - first inst
+    - second inst
+    ''')
+
+    selWebsite = st.selectbox('Select the Website',['newsNDTV','IndiaToday','News18'])
+    websiteImages = {'newsNDTV':'NDTV.png','IndiaToday':'indiatoday.jpg','News18':'news18breakingnews.webp'}
+    st.image(websiteImages.get(selWebsite))
+    st.subheader('Click here for collect News')
+    
     start = st.button('Collect News')
     if start:
         data = newsNDTV()
