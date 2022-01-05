@@ -32,40 +32,30 @@ def execute():
     - second inst
     ''')
 
-    selWebsite = st.selectbox('Select the Website', ['newsNDTV', 'IndiaToday','IndianExpress','BusinessStandard','News18'])
-    websiteImages = {'newsNDTV': 'NDTV.png','IndiaToday': 'indiatoday.jpg','IndianExpress':'expresslogo.jpg','BusinessStandard':'bslogo.png','News18': 'news18breakingnews.webp'}
+    selWebsite = st.selectbox('Select the Website', [
+                              'newsNDTV', 'IndiaToday', 'IndianExpress', 'BusinessStandard', 'News18'])
+    websiteImages = {'newsNDTV': 'NDTV.png', 'IndiaToday': 'indiatoday.jpg',
+                     'IndianExpress': 'expresslogo.jpg', 'BusinessStandard': 'bslogo.png', 'News18': 'news18breakingnews.webp'}
     st.image(websiteImages.get(selWebsite))
     st.subheader('Click here for collect News')
 
     start = st.button('Collect News')
+    data = []
     if start:
-        data = newsNDTV()
-        st.text(data)
-
+        if selWebsite == 'newsNDTV':
+            data = newsNDTV()
+        elif selWebsite == 'IndiaToday':
+            data = IndiaToday()
+        st.write(data)
         for news in data:
-            c1, c2 = st.columns([1,2.5])
+            c1, c2 = st.columns([1, 2.5])
             c1.markdown(f"![]({news.get('image')})")
             c2.markdown(f"""
                 #### {news.get('heading')}
-                {news.get('summary')}
-                {news.get('src')}
-                [View Full Article]({news.get('link')})
             """)
-
-        data = IndiaToday()
-        st.text(data)
-
-        for news in data:
-            c1, c2 = st.columns([1,2])
-            c1.markdown(f"![]({news.get('image')})")
-            c2.markdown(f"""
-                #### {news.get('heading')}
-                {news.get('summary')}
-                
-                [View Full Article]({news.get('link')})
-            """)
-            
-            
+            c2.text(f"{news.get('summary')}")
+            c2.text(f"{news.get('src')}")
+            c2.markdown(f"[View Full Article]({news.get('link')})")
 
 
 options = ['Project Introduction', 'Execution']
