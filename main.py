@@ -45,10 +45,10 @@ def execute():
         st.text(data)
 
         for news in data:
-            c1, c2 = st.columns(2)
+            c1, c2 = st.columns([1,2.5])
             c1.markdown(f"![]({news.get('image')})")
             c2.markdown(f"""
-                ## {news.get('heading')}
+                #### {news.get('heading')}
                 {news.get('summary')}
                 {news.get('src')}
                 [View Full Article]({news.get('link')})
@@ -58,11 +58,16 @@ def execute():
         st.text(data)
 
         for news in data:
-            st.subheader(news.get('heading'))
-            st.subheader(news.get('summary'))
-            st.subheader(news.get('link'))
-
-            st.subheader(news.get('image'))
+            c1, c2 = st.columns([1,2])
+            c1.markdown(f"![]({news.get('image')})")
+            c2.markdown(f"""
+                #### {news.get('heading')}
+                {news.get('summary')}
+                
+                [View Full Article]({news.get('link')})
+            """)
+            
+            
 
 
 options = ['Project Introduction', 'Execution']
