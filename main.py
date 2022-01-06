@@ -1,6 +1,6 @@
 import streamlit as st
-from newsscrapper import newsNDTV
-from newsscrapper import IndiaToday
+from newsscrapper import newsNDTV, IndiaToday, IndianExpress, BusinessStandard, News18
+
 
 st.title("News Collection App")
 
@@ -34,18 +34,24 @@ def execute():
 
     selWebsite = st.selectbox('Select the Website', [
                               'newsNDTV', 'IndiaToday', 'IndianExpress', 'BusinessStandard', 'News18'])
-    websiteImages = {'newsNDTV': 'NDTV.png', 'IndiaToday': 'indiatoday.jpg',
+    websiteImages = {'newsNDTV': 'NDTV.png', 'IndiaToday': 'IT.jpg',
                      'IndianExpress': 'expresslogo.jpg', 'BusinessStandard': 'bslogo.png', 'News18': 'news18breakingnews.webp'}
     st.image(websiteImages.get(selWebsite))
-    st.subheader('Click here for collect News')
+    st.subheader('Click here for View News')
 
-    start = st.button('Collect News')
+    start = st.button('View News')
     data = []
     if start:
         if selWebsite == 'newsNDTV':
             data = newsNDTV()
         elif selWebsite == 'IndiaToday':
             data = IndiaToday()
+        elif selWebsite == 'IndianExpress':
+            data=IndianExpress()
+        elif selWebsite == 'BusinessStandard':
+            data=BusinessStandard()
+        elif selWebsite == 'News18':
+            data=News18()
         st.write(data)
         for news in data:
             c1, c2 = st.columns([1, 2.5])

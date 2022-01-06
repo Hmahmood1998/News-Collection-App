@@ -36,7 +36,7 @@ def IndiaToday():
         detail['heading']=row.find('h2').text
         detail['summary']=row.find('p').text
         detail['link'] = row.find('h2').find('a').attrs.get('href')
-        detail['image']=row.find('pic').attrs.get('src')
+        # detail['image']=row.find('pic').attrs.get('src')
 
         news.append(detail)
     return news
@@ -52,7 +52,7 @@ def IndianExpress():
     for row in soup.find_all('div',{'class':'articles'}):
         detail={}
         
-        detail['sourse'] = row.find('div')
+        detail['src'] = row.find('div').text
         detail['summary']=row.find('p').text
         detail['link'] = row.find('a').attrs.get('href')
         detail['image']=row.find('img').attrs.get('src')
@@ -70,7 +70,7 @@ def BusinessStandard():
     news=[]
     for row in soup.find_all('div',{'class':'articles'}):
         detail={}
-        detail['sourse'] = row.find('div')
+        detail['src'] = row.find('div')
         detail['summary']=row.find('p').text
         detail['link'] = row.find('a').attrs.get('href')
         detail['image']=row.find('img').attrs.get('src')
@@ -79,14 +79,14 @@ def BusinessStandard():
 
 
 
-# def News18():
-#     url="https://www.news18.com/"
-#     data=requests.get(url)
-#     soup=BeautifulSoup(data.text)
+def News18():
+    url="https://www.news18.com/"
+    data=requests.get(url)
+    soup=BeautifulSoup(data.text)
 
-#     news=[]
-#     for row in soup.find_all('li',{'class':'fnt-siz-e'}):
-#         detail={}
+    news=[]
+    for row in soup.find_all('li',{'class':'fnt-siz-e'}):
+        detail={}
 
 
 
