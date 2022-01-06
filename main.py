@@ -52,6 +52,8 @@ def execute():
             data=BusinessStandard()
         elif selWebsite == 'News18':
             data=News18()
+        # showText = st.checkbox('View in Text Form')
+        # if showText:
         st.write(data)
         for news in data:
             c1, c2 = st.columns([1, 2.5])
@@ -60,7 +62,8 @@ def execute():
                 #### {news.get('heading')}
             """)
             c2.text(f"{news.get('summary')}")
-            c2.text(f"{news.get('src')}")
+            if news.get('src'):
+                c2.text(f"{news.get('src')}")
             c2.markdown(f"[View Full Article]({news.get('link')})")
 
 
