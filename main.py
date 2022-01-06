@@ -13,7 +13,7 @@ sidebar.title("User Options")
 
 def introduction():
     st.markdown("""
-        ## Heading Level 2
+        ### Heading Level 3
         - Feature 1
         - Feature 2
         - Feature 3
