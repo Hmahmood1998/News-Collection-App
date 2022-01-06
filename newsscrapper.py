@@ -64,7 +64,7 @@ def BusinessStandard():
     soup = BeautifulSoup(data.text)
 
     news = []
-    for row in soup.find_all('div', {'class': 'articles'}):
+    for row in soup.find_all('ul', {'class': 'listing'}):
         detail = {}
         detail['sourse'] = row.find('div')
         detail['summary'] = row.find('p').text
