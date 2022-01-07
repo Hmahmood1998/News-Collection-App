@@ -37,7 +37,7 @@ def execute():
     websiteImages = {'newsNDTV': 'NDTV.png', 'IndiaToday': 'indiatoday.jpg',
                      'IndianExpress': 'expresslogo.jpg', 'BusinessStandard': 'bslogo.png', 'News18': 'news18breakingnews.webp'}
     st.image(websiteImages.get(selWebsite))
-    st.subheader('Click here for View News')
+    st.subheader('Click here to latest News')
 
     start = st.button('View News')
     data = []
@@ -57,7 +57,8 @@ def execute():
         st.write(data)
         for news in data:
             c1, c2 = st.columns([1, 2.5])
-            c1.markdown(f"![]({news.get('image')})")
+            if news.get('image'):
+                c1.markdown(f"![]({news.get('image')})")
             c2.markdown(f"""
                 #### {news.get('heading')}
             """)
