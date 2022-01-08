@@ -1,6 +1,8 @@
 import streamlit as st
 from newsscrapper import newsNDTV, IndiaToday, IndianExpress, BusinessStandard, News18
-
+import pandas as pd
+from datetime import datetime
+import os
 
 st.title("News Collection App")
 
@@ -36,10 +38,11 @@ def execute():
                               'newsNDTV', 'IndiaToday', 'IndianExpress', 'BusinessStandard', 'News18'])
     websiteImages = {'newsNDTV': 'NDTV.png', 'IndiaToday': 'indiatoday.jpg',
                      'IndianExpress': 'expresslogo.jpg', 'BusinessStandard': 'bslogo.png', 'News18': 'news18breakingnews.webp'}
+    
     st.image(websiteImages.get(selWebsite))
     st.subheader('Click here for View News')
 
-    start = st.button('View News')
+    start = st.checkbox('View News')
     data = []
     if start:
         if selWebsite == 'newsNDTV':
@@ -54,7 +57,7 @@ def execute():
             data=News18()
         # showText = st.checkbox('View in Text Form')
         # if showText:
-        st.write(data)
+        # st.write(data)
         for news in data:
             c1, c2 = st.columns([1, 2.5])
             c1.markdown(f"![]({news.get('image')})")
@@ -66,8 +69,29 @@ def execute():
                 c2.text(f"{news.get('src')}")
             c2.markdown(f"[View Full Article]({news.get('link')})")
 
+        save_news = st.checkbox('Archive News')
+        if save_news:
+            try:
+                pd.DataFrame(data).to_csv(f'archived_news/{selWebsite}_{datetime.now().strftime("%d-%m-%Y_%H-%M")}.csv')
+            except Exception as e:
+                print(e)
+                st.error('Error Saving News')
 
-options = ['Project Introduction', 'Execution']
+def view_archived():
+
+    news_file_list = os.listdir('archived_news')
+    selFile = st.selectbox('Select File to View', news_file_list)
+
+    if selFile:
+
+        csv_data = pd.read_csv('archived_news/'+selFile)
+        st.dataframe(csv_data)
+
+        with open('archived_news/'+selFile, 'rb') as f:
+            st.download_button('Download CSV', f, 'text/csv')
+
+
+options = ['Project Introduction', 'Execution', 'View Archived News']
 
 selOption = sidebar.selectbox("Select an Option", options)
 
@@ -75,3 +99,5 @@ if selOption == options[0]:
     introduction()
 elif selOption == options[1]:
     execute()
+elif selOption == options[2]:
+    view_archived()
