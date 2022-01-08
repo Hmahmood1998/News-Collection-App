@@ -78,14 +78,6 @@ def BusinessStandard():
 
 
 
-def News18():
-    url="https://www.news18.com/"
-    data=requests.get(url)
-    soup=BeautifulSoup(data.text)
-
-    news=[]
-    for row in soup.find_all('li',{'class':'fnt-siz-e'}):
-        detail={}
 
 
 

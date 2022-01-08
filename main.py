@@ -1,5 +1,5 @@
 import streamlit as st
-from newsscrapper import newsNDTV, IndiaToday, IndianExpress, BusinessStandard, News18
+from newsscrapper import newsNDTV, IndiaToday, IndianExpress, BusinessStandard
 import pandas as pd
 from datetime import datetime
 import os
@@ -15,11 +15,27 @@ sidebar.title("User Options")
 
 def introduction():
     st.markdown("""
-        ### Heading Level 3
-        - Feature 1
-        - Feature 2
-        - Feature 3
+        ## Latest News
+    
+    Name : Hamid Mahamood
+    \nQualification : Bachelor of Technology(B.Tech)
+    \nStream : Technical 
+    \nUniversity : JNTUH
+    \nLocation : Hyderabad, INDIA
+    \nThis Project is collection of news from India's Top Website. Here we use various libraries of Python for making this project.
+        
+        - The Libraries I used in Project are:
+            BeautifulSoup Explore here
+            requests Explore here
+            datetime Explore here  
+            Pandas Explore here
+            os Explore here
+            Streamlit Explore here
+        
+        - Their Following Tasks are Implemented in the Project:
+            Web Scrapping for collecting the news
     """)
+    
 
     c1, c2 = st.columns(2)
 
@@ -35,7 +51,7 @@ def execute():
     ''')
 
     selWebsite = st.selectbox('Select the Website', [
-                              'newsNDTV', 'IndiaToday', 'IndianExpress', 'BusinessStandard', 'News18'])
+                              'newsNDTV', 'IndiaToday', 'IndianExpress', 'BusinessStandard'])
     websiteImages = {'newsNDTV': 'NDTV.png', 'IndiaToday': 'indiatoday.jpg',
                      'IndianExpress': 'expresslogo.jpg', 'BusinessStandard': 'bslogo.png', 'News18': 'news18breakingnews.webp'}
     
