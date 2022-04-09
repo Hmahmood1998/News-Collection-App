@@ -32,7 +32,7 @@ def introduction():
             os Explore here
             Streamlit Explore here
         
-        - Their Following Tasks are Implemented in the Project:
+        - Their Following features are Implemented in the Project:
             To read the Latest News of India's Top News Websites.
             I collect the News by using Web scrapping tool which is most valuable tool for extract
             the huge amount of Data that is constantly generated online.
