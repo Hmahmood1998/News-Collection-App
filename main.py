@@ -33,7 +33,10 @@ def introduction():
             Streamlit Explore here
         
         - Their Following Tasks are Implemented in the Project:
-            Web Scrapping for collecting the news
+            To read the Latest News of India's Top News Websites.
+            I collect the News by using Web scrapping tool which is most valuable tool for extract
+            the huge amount of Data that is constantly generated online.
+            You can also Archive the News Data in csv format.
     """)
     
 
@@ -53,7 +56,7 @@ def execute():
     selWebsite = st.selectbox('Select the Website', [
                               'newsNDTV', 'IndiaToday', 'IndianExpress', 'BusinessStandard'])
     websiteImages = {'newsNDTV': 'NDTV.png', 'IndiaToday': 'indiatoday.jpg',
-                     'IndianExpress': 'expresslogo.jpg', 'BusinessStandard': 'bslogo.png', 'News18': 'news18breakingnews.webp'}
+                     'IndianExpress': 'expresslogo.jpg', 'BusinessStandard': 'bslogo.png', }
     
     st.image(websiteImages.get(selWebsite))
     st.subheader('Click here to latest News')
@@ -69,8 +72,8 @@ def execute():
             data=IndianExpress()
         elif selWebsite == 'BusinessStandard':
             data=BusinessStandard()
-        elif selWebsite == 'News18':
-            data=News18()
+        # elif selWebsite == 'News18':
+        #     data=News18()
         # showText = st.checkbox('View in Text Form')
         # if showText:
         # st.write(data)
